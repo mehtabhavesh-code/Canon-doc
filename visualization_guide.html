@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization Guide - Character Consistency Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .content h2 {
+            color: #2C3E50;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .content h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .content h4 {
+            color: #555;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+        }
+        
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+        }
+        
+        .content strong {
+            color: #2C3E50;
+            font-weight: 600;
+        }
+        
+        .content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        
+        .content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .content hr {
+            border: none;
+            border-top: 2px solid #667eea;
+            margin: 30px 0;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .highlight-box h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box h3 {
+            color: #1976D2;
+            margin-top: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .footer {
+            background: #2C3E50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Visualization Guide</h1>
+            <p>Character Consistency Tracker</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">A Contract Marriage for Convenience and Survival | Episodes 1-98</p>
+        </div>
+        
+        <div class="content">
+            <p><strong>Last Updated:</strong> November 10, 2025<br>
+            <strong>Episodes Covered:</strong> 1-98<br>
+            <strong>Total Visualizations:</strong> 8 interactive dashboards + 1 comprehensive overview</p>
+            
+            <hr>
+            
+            <h2>📊 Dashboard Overview</h2>
+            
+            <h3>Main Dashboard (<code>character_dashboard.html</code>)</h3>
+            <p><strong>Purpose:</strong> Comprehensive at-a-glance view of all character consistency metrics<br>
+            <strong>Best For:</strong> Executive reviews, team meetings, quick reference</p>
+            
+            <div class="info-box">
+                <h3>Contains:</h3>
+                <ul>
+                    <li>Alessandra Character Evolution (4 traits tracked)</li>
+                    <li>Edgar Character Evolution (4 traits tracked)</li>
+                    <li>Relationship Intimacy & Trust Timeline</li>
+                    <li>Character Network Map (13 characters, 21 relationships)</li>
+                    <li>Major Story Events Timeline (16 critical moments)</li>
+                    <li>Continuity Issues Priority (6 flagged issues)</li>
+                    <li>Power Dynamics Heatmap (Alessandra vs. 4 antagonists)</li>
+                    <li>Episode Intensity Heatmap</li>
+                </ul>
+            </div>
+            
+            <p><strong>How to Use:</strong></p>
+            <ol>
+                <li>Open in any web browser</li>
+                <li>Hover over any data point for detailed information</li>
+                <li>Click legend items to show/hide specific data series</li>
+                <li>Zoom and pan on any chart for closer examination</li>
+                <li>All charts are interactive and synchronized</li>
+            </ol>
+            
+            <hr>
+            
+            <h2>📈 Individual Visualizations</h2>
+            
+            <h3>1. Character Arc Comparison (<code>character_arc_comparison.html</code>)</h3>
+            <p><strong>Purpose:</strong> Side-by-side comparison of protagonist emotional evolution<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Writers planning character development</li>
+                <li>Verifying parallel emotional journeys</li>
+                <li>Identifying moments where characters diverge/converge</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <h3>Key Insights:</h3>
+                <ul>
+                    <li>Alessandra: Confidence & Assertiveness rise sharply (Ep 21-40)</li>
+                    <li>Edgar: Emotional Openness & Vulnerability rise gradually (Ep 40-90)</li>
+                    <li>Both converge at peak intimacy by Episode 95</li>
+                </ul>
+                <p><strong>Annotations:</strong></p>
+                <ul>
+                    <li>Episode 34: Wedding (catalyst for acceleration)</li>
+                    <li>Episode 60: First Kiss (intimacy milestone)</li>
+                    <li>Episode 89: Consummation (ultimate vulnerability)</li>
+                </ul>
+            </div>
+            
+            <h3>2. Relationship Journey Map (<code>relationship_journey.html</code>)</h3>
+            <p><strong>Purpose:</strong> Track primary relationships over 98 episodes<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Understanding relationship progression</li>
+                <li>Identifying key relationship milestones</li>
+                <li>Planning future relationship arcs</li>
+            </ul>
+            
+            <p><strong>Three Relationships Tracked:</strong></p>
+            <ol>
+                <li><strong>Edgar & Alessandra</strong> (Intimacy + Trust): Both rise from 2→10</li>
+                <li><strong>Alessandra & Kate</strong> (Hostility): Consistently 7→10 (no redemption)</li>
+                <li>Visual contrast shows love growing as hostility escalates</li>
+            </ol>
+            
+            <p><strong>Key Milestones Labeled:</strong></p>
+            <ul>
+                <li>Contract (Ep 1)</li>
+                <li>Forever (Ep 7)</li>
+                <li>Wedding (Ep 34)</li>
+                <li>Lap Sitting (Ep 40)</li>
+                <li>1st Kiss (Ep 60)</li>
+                <li>Bedroom Talk (Ep 67)</li>
+                <li>Vulnerability (Ep 84)</li>
+                <li>Consummation (Ep 89)</li>
+                <li>Mask Off (Ep 95)</li>
+                <li>Partnership (Ep 98)</li>
+            </ul>
+            
+            <h3>3. Story Intensity Timeline (<code>story_intensity_timeline.html</code>)</h3>
+            <p><strong>Purpose:</strong> Map all major narrative events across the series<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Planning promotional assets</li>
+                <li>Identifying high-tension episodes for trailers</li>
+                <li>Understanding narrative pacing</li>
+            </ul>
+            
+            <p><strong>Event Categories:</strong></p>
+            <ul>
+                <li>🔴 <strong>Trauma Events</strong> (3): Kitten killed, scarring revealed, etc.</li>
+                <li>💚 <strong>Character Growth</strong> (2): Revenge moment, power assertion</li>
+                <li>💜 <strong>Major Cliffhangers</strong> (8): Fall, wedding, murder confession, King reveal</li>
+                <li>💗 <strong>Relationship Milestones</strong> (3): Contract, first kiss, consummation</li>
+            </ul>
+            
+            <p><strong>Vertical Lines Mark:</strong> Episodes 33, 34, 47, 55, 71, 86, 98 (major plot points)</p>
+            
+            <h3>4. Continuity Issues Dashboard (<code>continuity_issues.html</code>)</h3>
+            <p><strong>Purpose:</strong> Priority list for writers to resolve consistency problems<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Writer room planning</li>
+                <li>Script review priorities</li>
+                <li>Quality control checkpoints</li>
+            </ul>
+            
+            <p><strong>6 Issues Flagged (Severity 6-10):</strong></p>
+            <ol>
+                <li>🔴 <strong>King's Name</strong> (Severity 10): Frederick vs. Tobias inconsistency</li>
+                <li>🔴 <strong>King's Allegiance</strong> (Severity 9): Episode 97 betrayal revelation</li>
+                <li>🟠 <strong>William's Childhood Connection</strong> (Severity 8): Needs flashback</li>
+                <li>🔵 <strong>Oliver's Secret</strong> (Severity 7): Mentioned but never revealed</li>
+                <li>⚪ <strong>Edgar's Devil Past</strong> (Severity 6): Vague warning without specifics</li>
+                <li>🟠 <strong>Isabella's Fate</strong> (Severity 8): Mother storyline unresolved</li>
+            </ol>
+            
+            <p><strong>Color Coding:</strong></p>
+            <ul>
+                <li>Red: Unresolved critical</li>
+                <li>Orange: Needs development</li>
+                <li>Blue: Minor but noted</li>
+                <li>Gray: Vague reference</li>
+            </ul>
+            
+            <h3>5. Power Dynamics Over Time (<code>power_dynamics.html</code>)</h3>
+            <p><strong>Purpose:</strong> Track Alessandra's power relative to each antagonist<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Verifying character arc consistency</li>
+                <li>Planning confrontation scenes</li>
+                <li>Ensuring power shifts are earned</li>
+            </ul>
+            
+            <p><strong>Four Antagonists Tracked:</strong></p>
+            <ul>
+                <li><strong>Kate:</strong> 2→10 (complete power inversion by Ep 21)</li>
+                <li><strong>Katrina:</strong> 3→10 (gradual shift, peaks at Ep 93 financial defeat)</li>
+                <li><strong>Desmond:</strong> 2→10 (jumps to 10 when executed at Ep 34)</li>
+                <li><strong>Priscilla:</strong> 5→10 (longest arc, defeated at Ep 93)</li>
+            </ul>
+            
+            <p><strong>Power Zones:</strong></p>
+            <ul>
+                <li>🔴 Red (0-4): Antagonist dominance</li>
+                <li>🟠 Orange (4-7): Power struggle</li>
+                <li>🟢 Green (7-10): Alessandra dominance</li>
+            </ul>
+            
+            <p><strong>Key Insight:</strong> All antagonists eventually reach 10 (Alessandra has complete power), but at different rates and through different means.</p>
+            
+            <h3>6. Alessandra Trait Radar (<code>character_radar_alessandra.html</code>)</h3>
+            <p><strong>Purpose:</strong> Visual snapshot of character trait evolution in 3 stages<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Quick reference for character voice</li>
+                <li>Verifying trait consistency within time periods</li>
+                <li>Onboarding new writers</li>
+            </ul>
+            
+            <p><strong>Five Traits Tracked:</strong></p>
+            <ol>
+                <li>Confidence</li>
+                <li>Assertiveness</li>
+                <li>Emotional Openness</li>
+                <li>Physical Courage</li>
+                <li>Trust in Others</li>
+            </ol>
+            
+            <p><strong>Three Stages:</strong></p>
+            <ul>
+                <li><strong>Early (Ep 1-20):</strong> All traits low (2 average) - victimhood phase</li>
+                <li><strong>Mid (Ep 40-60):</strong> Mixed traits (5-8) - transition phase</li>
+                <li><strong>Late (Ep 80-98):</strong> All traits high (9-10) - empowerment phase</li>
+            </ul>
+            
+            <h3>7. Edgar Trait Radar (<code>character_radar_edgar.html</code>)</h3>
+            <p><strong>Purpose:</strong> Visual snapshot of Edgar's emotional journey<br>
+            <strong>Best For:</strong></p>
+            <ul>
+                <li>Understanding Edgar's character voice</li>
+                <li>Balancing his "terrifying" reputation with vulnerability</li>
+                <li>Planning romantic progression</li>
+            </ul>
+            
+            <p><strong>Five Traits Tracked:</strong></p>
+            <ol>
+                <li>Emotional Openness</li>
+                <li>Protectiveness</li>
+                <li>Vulnerability</li>
+                <li>Patience</li>
+                <li>Trust</li>
+            </ol>
+            
+            <p><strong>Three Stages:</strong></p>
+            <ul>
+                <li><strong>Early (Ep 1-20):</strong> High protectiveness (6), low vulnerability (1)</li>
+                <li><strong>Mid (Ep 40-60):</strong> Protectiveness peaks (10), vulnerability rising (4)</li>
+                <li><strong>Late (Ep 80-98):</strong> All traits high except patience slightly lower (strategic impatience for action)</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>🎯 Use Cases by Role</h2>
+            
+            <h3>For Writers:</h3>
+            <ol>
+                <li><strong>Before Writing:</strong> Check character arc comparison + trait radars</li>
+                <li><strong>During Writing:</strong> Reference relationship journey map for milestone consistency</li>
+                <li><strong>After Writing:</strong> Verify power dynamics match scene outcomes</li>
+            </ol>
+            
+            <p><strong>Recommended Workflow:</strong></p>
+            <ul>
+                <li>Open <code>character_dashboard.html</code> for overview</li>
+                <li>Drill into specific charts as needed</li>
+                <li>Flag any new inconsistencies in your script notes</li>
+            </ul>
+            
+            <h3>For Editors:</h3>
+            <ol>
+                <li><strong>Script Review:</strong> Check continuity issues dashboard first</li>
+                <li><strong>Character Voice:</strong> Use trait radars to verify dialogue consistency</li>
+                <li><strong>Relationship Verification:</strong> Cross-reference relationship journey map</li>
+            </ol>
+            
+            <div class="info-box">
+                <h3>Quality Checklist:</h3>
+                <ul>
+                    <li>Character traits match episode range in radar chart?</li>
+                    <li>Relationship intimacy/trust level appropriate for episode?</li>
+                    <li>Power dynamics consistent with antagonist status?</li>
+                    <li>Any new continuity issues introduced?</li>
+                </ul>
+            </div>
+            
+            <h3>For Showrunners:</h3>
+            <ol>
+                <li><strong>Strategic Planning:</strong> Story intensity timeline shows pacing</li>
+                <li><strong>Marketing Assets:</strong> Use timeline to identify promotional moments</li>
+                <li><strong>Quality Control:</strong> Continuity issues dashboard = priority list</li>
+            </ol>
+            
+            <p><strong>Monthly Review Process:</strong></p>
+            <ol>
+                <li>Review main dashboard with team</li>
+                <li>Discuss continuity issues - prioritize fixes</li>
+                <li>Update visualizations with new episodes</li>
+                <li>Share insights with marketing/production</li>
+            </ol>
+            
+            <h3>For Marketing Team:</h3>
+            <ol>
+                <li><strong>Ad Creative:</strong> Story intensity timeline identifies clip-worthy moments</li>
+                <li><strong>Campaign Planning:</strong> Relationship journey shows romantic progression</li>
+                <li><strong>Audience Segmentation:</strong> Character arcs reveal appeal factors</li>
+            </ol>
+            
+            <p><strong>High-Value Promotional Episodes:</strong></p>
+            <ul>
+                <li>Episode 33: Major cliffhanger (fall)</li>
+                <li>Episode 34: Wedding + execution (dual intensity)</li>
+                <li>Episode 47: Scarring revelation (emotional peak)</li>
+                <li>Episode 86: Murder confession (shock value)</li>
+                <li>Episode 95: Mask removal (vulnerability payoff)</li>
+                <li>Episode 98: King reveal (series climax)</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>🔧 Technical Specifications</h2>
+            
+            <h3>Browser Compatibility:</h3>
+            <ul>
+                <li>Chrome: ✅ Fully supported</li>
+                <li>Firefox: ✅ Fully supported</li>
+                <li>Safari: ✅ Fully supported</li>
+                <li>Edge: ✅ Fully supported</li>
+                <li>Mobile: ⚠️ Functional but better on desktop</li>
+            </ul>
+            
+            <h3>File Sizes:</h3>
+            <ul>
+                <li>Main Dashboard: ~3.5 MB</li>
+                <li>Individual Charts: ~500 KB - 1.5 MB each</li>
+                <li>Total Package: ~8 MB</li>
+            </ul>
+            
+            <h3>Interactivity Features:</h3>
+            <ul>
+                <li><strong>Hover:</strong> Detailed tooltips on all data points</li>
+                <li><strong>Click:</strong> Toggle series visibility in legends</li>
+                <li><strong>Zoom:</strong> Box select or scroll zoom on charts</li>
+                <li><strong>Pan:</strong> Click and drag to move around charts</li>
+                <li><strong>Download:</strong> Export charts as PNG via toolbar</li>
+            </ul>
+            
+            <h3>Data Update Process:</h3>
+            <ol>
+                <li>Update <code>character_data.py</code> with new episode data</li>
+                <li>Run <code>python create_dashboard.py</code> to regenerate main dashboard</li>
+                <li>Run <code>python create_individual_charts.py</code> for standalone charts</li>
+                <li>All visualizations auto-update with new data</li>
+            </ol>
+            
+            <hr>
+            
+            <h2>📝 Interpretation Guide</h2>
+            
+            <h3>Reading Character Evolution Charts:</h3>
+            <ul>
+                <li><strong>Steep upward slopes:</strong> Rapid character growth (look for catalyst episodes)</li>
+                <li><strong>Plateaus:</strong> Stable character phase (consolidation period)</li>
+                <li><strong>Downward trends:</strong> Regression or strategic retreat (rare but significant)</li>
+            </ul>
+            
+            <p><strong>Example:</strong> Alessandra's confidence jumps from 3→6 between Ep 20-33 because of:</p>
+            <ul>
+                <li>Episode 21: Horse excrement revenge</li>
+                <li>Episode 22: Physical confrontation with Katrina</li>
+                <li>Episode 23: Demands stolen inheritance</li>
+                <li>Episode 33: Survives abduction attempt</li>
+            </ul>
+            
+            <h3>Reading Relationship Charts:</h3>
+            <ul>
+                <li><strong>Parallel lines:</strong> Balanced relationship growth</li>
+                <li><strong>Diverging lines:</strong> Tension or imbalance</li>
+                <li><strong>Converging lines:</strong> Resolution or harmony</li>
+            </ul>
+            
+            <p><strong>Example:</strong> Edgar & Alessandra's intimacy and trust lines converge at Ep 89 (consummation) - physical and emotional intimacy finally aligned.</p>
+            
+            <h3>Reading Power Dynamics:</h3>
+            <ul>
+                <li><strong>Score of 2-4:</strong> Antagonist has power over Alessandra</li>
+                <li><strong>Score of 5-6:</strong> Power struggle, uncertain outcome</li>
+                <li><strong>Score of 7-8:</strong> Alessandra gaining advantage</li>
+                <li><strong>Score of 9-10:</strong> Alessandra has complete power (victory)</li>
+            </ul>
+            
+            <p><strong>Note:</strong> Score of 10 can mean different things:</p>
+            <ul>
+                <li>Kate (Ep 21): Alessandra humiliated her, power inverted</li>
+                <li>Desmond (Ep 34): Alessandra ordered his execution</li>
+                <li>Priscilla (Ep 93): Alessandra defeated her financially</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>🚀 Advanced Features</h2>
+            
+            <h3>Exporting Data:</h3>
+            <p>All charts can be exported as:</p>
+            <ul>
+                <li><strong>PNG images:</strong> Via camera icon in toolbar (for presentations)</li>
+                <li><strong>Static HTML:</strong> Via code (for embedding in documents)</li>
+                <li><strong>CSV data:</strong> Via Python scripts (for further analysis)</li>
+            </ul>
+            
+            <h3>Customization:</h3>
+            <p>Modify <code>character_data.py</code> to:</p>
+            <ul>
+                <li>Add new characters</li>
+                <li>Track additional traits</li>
+                <li>Create custom relationships</li>
+                <li>Adjust scoring algorithms</li>
+            </ul>
+            
+            <h3>Integration Possibilities:</h3>
+            <ul>
+                <li><strong>Scriptwriting Software:</strong> Embed charts in Celtx/Final Draft</li>
+                <li><strong>Project Management:</strong> Link to Asana/Trello tasks</li>
+                <li><strong>Analytics Dashboard:</strong> Combine with listener data</li>
+                <li><strong>Marketing Tools:</strong> Use for campaign planning</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>🎬 Quick Start Guide</h2>
+            
+            <h3>First Time Users:</h3>
+            <ol>
+                <li>Download all HTML files to a folder</li>
+                <li>Open <code>character_dashboard.html</code> in Chrome/Firefox</li>
+                <li>Explore by hovering and clicking</li>
+                <li>Review this guide's "Use Cases by Role" section</li>
+                <li>Bookmark files for regular reference</li>
+            </ol>
+            
+            <h3>Daily Writer Workflow:</h3>
+            <ol>
+                <li>Open relevant character radar for episode range</li>
+                <li>Check relationship journey map for current status</li>
+                <li>Verify power dynamics before confrontation scenes</li>
+                <li>Flag any inconsistencies for team discussion</li>
+            </ol>
+            
+            <h3>Weekly Team Review:</h3>
+            <ol>
+                <li>Display main dashboard on large screen</li>
+                <li>Walk through each visualization</li>
+                <li>Discuss continuity issues priorities</li>
+                <li>Update production notes with insights</li>
+            </ol>
+            
+            <div class="highlight-box">
+                <h3>📂 File Directory</h3>
+                <pre><code>Canon 2/
+├── character_consistency_tracker.html (58-page detailed reference)
+├── character_dashboard.html (main comprehensive dashboard)
+├── character_arc_comparison.html
+├── relationship_journey.html
+├── story_intensity_timeline.html
+├── continuity_issues.html
+├── power_dynamics.html
+├── character_radar_alessandra.html
+└── character_radar_edgar.html</code></pre>
+                <p><strong>Total Package:</strong> 9 files, ~10 MB, 100% interactive</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="index.html" class="btn">← Back to Dashboard Hub</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Character Consistency Tracker</strong></p>
+            <p>Version 1.0 | Last Updated: November 10, 2025 | Episodes 1-98</p>
+        </div>
+    </div>
+</body>
+</html>
+

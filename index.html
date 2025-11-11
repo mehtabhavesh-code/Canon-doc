@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Consistency Tracker - Visual Dashboard Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            color: #2C3E50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .dashboard-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.5em;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .card-description {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .card-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .card-features li {
+            padding: 5px 0;
+            color: #666;
+        }
+        
+        .card-features li::before {
+            content: '✓ ';
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            box-shadow: none;
+            margin-left: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .feature-highlight {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .feature-highlight h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            background: #2C3E50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 Character Consistency Tracker</h1>
+            <p>Visual Dashboard Hub</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">A Contract Marriage for Convenience and Survival | Episodes 1-98</p>
+        </div>
+        
+        <!-- Stats Bar -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">98</div>
+                <div class="stat-label">Episodes Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">13</div>
+                <div class="stat-label">Characters Tracked</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">11</div>
+                <div class="stat-label">Plot Threads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">13</div>
+                <div class="stat-label">Interactive Dashboards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Contradictions Flagged</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">37</div>
+                <div class="stat-label">Timeline Events</div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Main Dashboard Section -->
+            <div class="section">
+                <h2 class="section-title">🎯 Main Dashboard</h2>
+                <div class="feature-highlight">
+                    <h3>⭐ Start Here!</h3>
+                    <p>The comprehensive dashboard contains all visualizations in one place. Perfect for team meetings and executive reviews.</p>
+                </div>
+                
+                <div class="dashboard-card" style="max-width: 600px; margin: 0 auto;">
+                    <div class="card-icon">📈</div>
+                    <h3 class="card-title">Complete Character Dashboard</h3>
+                    <p class="card-description">All-in-one interactive visualization with 8 charts covering character evolution, relationships, story events, and continuity issues.</p>
+                    <ul class="card-features">
+                        <li>Alessandra & Edgar character evolution</li>
+                        <li>Relationship intimacy & trust timeline</li>
+                        <li>13-character network map</li>
+                        <li>Major story events (16 key moments)</li>
+                        <li>Continuity issues priority matrix</li>
+                        <li>Power dynamics heatmap</li>
+                    </ul>
+                    <a href="character_dashboard.html" class="btn">Open Main Dashboard</a>
+                    <a href="visualization_guide.html" class="btn btn-secondary">View Guide</a>
+                </div>
+            </div>
+            
+            <!-- Plot Thread & Timeline Section -->
+            <div class="section">
+                <h2 class="section-title">🔍 Plot Thread & Timeline Analysis</h2>
+                <div class="feature-highlight" style="background: #fff3cd; border-left-color: #ffc107;">
+                    <h3>🆕 New: Continuity Verification Tools</h3>
+                    <p>Track plot threads, validate timeline sequences, and identify contradictions/plot holes across all 98 episodes.</p>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <!-- Plot Threads Gantt -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">📅</div>
+                        <h3 class="card-title">Plot Threads Gantt Chart</h3>
+                        <p class="card-description">11 major storylines tracked from start to finish with milestones.</p>
+                        <ul class="card-features">
+                            <li>Resolution status tracking</li>
+                            <li>Consistency scoring</li>
+                            <li>Key milestone markers</li>
+                        </ul>
+                        <a href="plot_threads_gantt.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Timeline Sequence -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">⏰</div>
+                        <h3 class="card-title">Timeline Sequence Validation</h3>
+                        <p class="card-description">37 events chronologically ordered to verify no timeline contradictions.</p>
+                        <ul class="card-features">
+                            <li>Pre-story backstory events</li>
+                            <li>Critical 24-hour sequence (Ep 31-34)</li>
+                            <li>Verified vs. unverified events</li>
+                        </ul>
+                        <a href="timeline_sequence.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Contradictions Matrix -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">⚠️</div>
+                        <h3 class="card-title">Contradictions & Plot Holes</h3>
+                        <p class="card-description">10 identified issues with severity scoring and resolution status.</p>
+                        <ul class="card-features">
+                            <li>King name inconsistency (Severity 10)</li>
+                            <li>William backstory gap (Severity 8)</li>
+                            <li>Dangling thread tracking</li>
+                        </ul>
+                        <a href="contradictions_matrix.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Continuity Health -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">🏥</div>
+                        <h3 class="card-title">Continuity Health Dashboard</h3>
+                        <p class="card-description">6-chart overview of overall story continuity status.</p>
+                        <ul class="card-features">
+                            <li>Thread status distribution</li>
+                            <li>Contradiction type breakdown</li>
+                            <li>Episodes with most issues</li>
+                        </ul>
+                        <a href="continuity_health_dashboard.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Plot Interconnections -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">🕸️</div>
+                        <h3 class="card-title">Plot Thread Interconnections</h3>
+                        <p class="card-description">Network map showing how storylines converge and interact.</p>
+                        <ul class="card-features">
+                            <li>Shared episode tracking</li>
+                            <li>Story convergence points</li>
+                            <li>Thread relationship strength</li>
+                        </ul>
+                        <a href="plot_interconnections.html" class="btn">View Chart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Character Visualizations -->
+            <div class="section">
+                <h2 class="section-title">👥 Character Consistency</h2>
+                <p style="margin-bottom: 30px; color: #666;">Deep-dive into character evolution, relationships, and consistency tracking.</p>
+                
+                <div class="dashboard-grid">
+                    <!-- Character Arc Comparison -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">👥</div>
+                        <h3 class="card-title">Character Arc Comparison</h3>
+                        <p class="card-description">Side-by-side evolution of Alessandra and Edgar across 98 episodes.</p>
+                        <ul class="card-features">
+                            <li>4 traits per character</li>
+                            <li>Key milestone annotations</li>
+                            <li>Parallel growth patterns</li>
+                        </ul>
+                        <a href="character_arc_comparison.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Relationship Journey -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">💕</div>
+                        <h3 class="card-title">Relationship Journey Map</h3>
+                        <p class="card-description">Track intimacy, trust, and hostility across major relationships.</p>
+                        <ul class="card-features">
+                            <li>Edgar & Alessandra love arc</li>
+                            <li>Alessandra & Kate hostility</li>
+                            <li>10 milestone moments labeled</li>
+                        </ul>
+                        <a href="relationship_journey.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Story Intensity -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">Story Intensity Timeline</h3>
+                        <p class="card-description">Map 16 major events by narrative importance and type.</p>
+                        <ul class="card-features">
+                            <li>Major cliffhangers (8)</li>
+                            <li>Trauma events (3)</li>
+                            <li>Relationship milestones (3)</li>
+                        </ul>
+                        <a href="story_intensity_timeline.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Continuity Issues -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">⚠️</div>
+                        <h3 class="card-title">Continuity Issues Priority</h3>
+                        <p class="card-description">6 flagged consistency problems requiring writer attention.</p>
+                        <ul class="card-features">
+                            <li>Severity scoring (1-10)</li>
+                            <li>Status tracking</li>
+                            <li>Episode references</li>
+                        </ul>
+                        <a href="continuity_issues.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Power Dynamics -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">⚔️</div>
+                        <h3 class="card-title">Power Dynamics Evolution</h3>
+                        <p class="card-description">Alessandra's power vs. 4 antagonists over time.</p>
+                        <ul class="card-features">
+                            <li>Kate, Katrina, Desmond, Priscilla</li>
+                            <li>Color-coded power zones</li>
+                            <li>Victory patterns analysis</li>
+                        </ul>
+                        <a href="power_dynamics.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Alessandra Radar -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Alessandra Trait Radar</h3>
+                        <p class="card-description">Character traits across 3 evolutionary stages.</p>
+                        <ul class="card-features">
+                            <li>5 core traits tracked</li>
+                            <li>Early/Mid/Late comparison</li>
+                            <li>Visual growth patterns</li>
+                        </ul>
+                        <a href="character_radar_alessandra.html" class="btn">View Chart</a>
+                    </div>
+                    
+                    <!-- Edgar Radar -->
+                    <div class="dashboard-card">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Edgar Trait Radar</h3>
+                        <p class="card-description">Character traits across 3 evolutionary stages.</p>
+                        <ul class="card-features">
+                            <li>5 core traits tracked</li>
+                            <li>Early/Mid/Late comparison</li>
+                            <li>Emotional development arc</li>
+                        </ul>
+                        <a href="character_radar_edgar.html" class="btn">View Chart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Documentation Section -->
+            <div class="section">
+                <h2 class="section-title">📚 Documentation</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-icon">📖</div>
+                        <h3 class="card-title">Character Consistency Tracker</h3>
+                        <p class="card-description">58-page comprehensive reference document with detailed character profiles, relationships, and consistency rules.</p>
+                        <a href="character_consistency_tracker.html" class="btn">Read Full Tracker</a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">📋</div>
+                        <h3 class="card-title">Visualization Guide</h3>
+                        <p class="card-description">Complete guide to using all dashboards, interpretation tips, and role-specific workflows.</p>
+                        <a href="visualization_guide.html" class="btn">Read Guide</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Use Cases Section -->
+            <div class="section">
+                <h2 class="section-title">💼 Use Cases by Role</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; border-left: 5px solid #2196F3;">
+                        <h3 style="color: #1976D2; margin-bottom: 10px;">✍️ Writers</h3>
+                        <p style="color: #555;">Check trait radars before writing. Verify relationship status. Monitor power dynamics for confrontations.</p>
+                    </div>
+                    
+                    <div style="background: #f3e5f5; padding: 20px; border-radius: 10px; border-left: 5px solid #9C27B0;">
+                        <h3 style="color: #7B1FA2; margin-bottom: 10px;">✂️ Editors</h3>
+                        <p style="color: #555;">Review continuity issues first. Use character arcs to verify voice consistency. Cross-check relationships.</p>
+                    </div>
+                    
+                    <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; border-left: 5px solid #4CAF50;">
+                        <h3 style="color: #388E3C; margin-bottom: 10px;">🎬 Showrunners</h3>
+                        <p style="color: #555;">Story intensity timeline shows pacing. Continuity dashboard = priority list. Team reviews with main dashboard.</p>
+                    </div>
+                    
+                    <div style="background: #fff3e0; padding: 20px; border-radius: 10px; border-left: 5px solid #FF9800;">
+                        <h3 style="color: #F57C00; margin-bottom: 10px;">📢 Marketing</h3>
+                        <p style="color: #555;">Intensity timeline identifies clip-worthy moments. Relationship journey shows romantic progression for campaigns.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Tips -->
+            <div class="feature-highlight">
+                <h3>💡 Quick Tips</h3>
+                <ul style="margin-top: 15px; line-height: 2;">
+                    <li><strong>New to the project?</strong> Start with the Main Dashboard, then read the Visualization Guide.</li>
+                    <li><strong>Daily writing?</strong> Keep Character Arc Comparison and Relationship Journey open as tabs.</li>
+                    <li><strong>Script review?</strong> Check Continuity Issues Dashboard first to catch known problems.</li>
+                    <li><strong>Planning promos?</strong> Use Story Intensity Timeline to find high-impact moments.</li>
+                    <li><strong>All charts are interactive!</strong> Hover, click, zoom, and pan to explore data.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Character Consistency Tracker</strong></p>
+            <p>Version 1.0 | Last Updated: November 10, 2025 | Episodes 1-98</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                Built with ❤️ for storytellers | All visualizations are interactive and exportable
+            </p>
+        </div>
+    </div>
+</body>
+</html>

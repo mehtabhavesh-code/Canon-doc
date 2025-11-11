@@ -1,0 +1,23 @@
+{
+  "name": "canon-character-consistency-tracker",
+  "version": "1.0.0",
+  "description": "Visual Dashboard Hub for Character Consistency Tracking - A Contract Marriage for Convenience and Survival",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "character-tracking",
+    "visualization",
+    "dashboard",
+    "story-consistency"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
+
