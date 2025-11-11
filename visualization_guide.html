@@ -100,6 +100,25 @@
             font-size: 0.9em;
         }
         
+        .content code a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .content code a:hover {
+            text-decoration: underline;
+        }
+        
+        .content a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .content a:hover {
+            text-decoration: underline;
+        }
+        
         .content pre {
             background: #f4f4f4;
             padding: 15px;
@@ -203,7 +222,7 @@
             
             <h2>📊 Dashboard Overview</h2>
             
-            <h3>Main Dashboard (<code>character_dashboard.html</code>)</h3>
+            <h3>Main Dashboard (<a href="character_dashboard.html"><code>character_dashboard.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Comprehensive at-a-glance view of all character consistency metrics<br>
             <strong>Best For:</strong> Executive reviews, team meetings, quick reference</p>
             
@@ -234,7 +253,7 @@
             
             <h2>📈 Individual Visualizations</h2>
             
-            <h3>1. Character Arc Comparison (<code>character_arc_comparison.html</code>)</h3>
+            <h3>1. Character Arc Comparison (<a href="character_arc_comparison.html"><code>character_arc_comparison.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Side-by-side comparison of protagonist emotional evolution<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -258,7 +277,7 @@
                 </ul>
             </div>
             
-            <h3>2. Relationship Journey Map (<code>relationship_journey.html</code>)</h3>
+            <h3>2. Relationship Journey Map (<a href="relationship_journey.html"><code>relationship_journey.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Track primary relationships over 98 episodes<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -288,7 +307,7 @@
                 <li>Partnership (Ep 98)</li>
             </ul>
             
-            <h3>3. Story Intensity Timeline (<code>story_intensity_timeline.html</code>)</h3>
+            <h3>3. Story Intensity Timeline (<a href="story_intensity_timeline.html"><code>story_intensity_timeline.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Map all major narrative events across the series<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -307,7 +326,7 @@
             
             <p><strong>Vertical Lines Mark:</strong> Episodes 33, 34, 47, 55, 71, 86, 98 (major plot points)</p>
             
-            <h3>4. Continuity Issues Dashboard (<code>continuity_issues.html</code>)</h3>
+            <h3>4. Continuity Issues Dashboard (<a href="continuity_issues.html"><code>continuity_issues.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Priority list for writers to resolve consistency problems<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -334,7 +353,7 @@
                 <li>Gray: Vague reference</li>
             </ul>
             
-            <h3>5. Power Dynamics Over Time (<code>power_dynamics.html</code>)</h3>
+            <h3>5. Power Dynamics Over Time (<a href="power_dynamics.html"><code>power_dynamics.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Track Alessandra's power relative to each antagonist<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -360,7 +379,7 @@
             
             <p><strong>Key Insight:</strong> All antagonists eventually reach 10 (Alessandra has complete power), but at different rates and through different means.</p>
             
-            <h3>6. Alessandra Trait Radar (<code>character_radar_alessandra.html</code>)</h3>
+            <h3>6. Alessandra Trait Radar (<a href="character_radar_alessandra.html"><code>character_radar_alessandra.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Visual snapshot of character trait evolution in 3 stages<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -385,7 +404,7 @@
                 <li><strong>Late (Ep 80-98):</strong> All traits high (9-10) - empowerment phase</li>
             </ul>
             
-            <h3>7. Edgar Trait Radar (<code>character_radar_edgar.html</code>)</h3>
+            <h3>7. Edgar Trait Radar (<a href="character_radar_edgar.html"><code>character_radar_edgar.html</code></a>)</h3>
             <p><strong>Purpose:</strong> Visual snapshot of Edgar's emotional journey<br>
             <strong>Best For:</strong></p>
             <ul>
@@ -423,7 +442,7 @@
             
             <p><strong>Recommended Workflow:</strong></p>
             <ul>
-                <li>Open <code>character_dashboard.html</code> for overview</li>
+                <li>Open <a href="character_dashboard.html"><code>character_dashboard.html</code></a> for overview</li>
                 <li>Drill into specific charts as needed</li>
                 <li>Flag any new inconsistencies in your script notes</li>
             </ul>
@@ -593,7 +612,7 @@
             <h3>First Time Users:</h3>
             <ol>
                 <li>Download all HTML files to a folder</li>
-                <li>Open <code>character_dashboard.html</code> in Chrome/Firefox</li>
+                <li>Open <a href="character_dashboard.html"><code>character_dashboard.html</code></a> in Chrome/Firefox</li>
                 <li>Explore by hovering and clicking</li>
                 <li>Review this guide's "Use Cases by Role" section</li>
                 <li>Bookmark files for regular reference</li>
@@ -615,20 +634,22 @@
                 <li>Update production notes with insights</li>
             </ol>
             
-            <div class="highlight-box">
+            <!-- <div class="highlight-box">
                 <h3>📂 File Directory</h3>
-                <pre><code>Canon 2/
-├── character_consistency_tracker.html (58-page detailed reference)
-├── character_dashboard.html (main comprehensive dashboard)
-├── character_arc_comparison.html
-├── relationship_journey.html
-├── story_intensity_timeline.html
-├── continuity_issues.html
-├── power_dynamics.html
-├── character_radar_alessandra.html
-└── character_radar_edgar.html</code></pre>
+                <ul style="list-style: none; margin-left: 0;">
+                    <li>Canon 2/</li>
+                    <li>├── <a href="character_consistency_tracker.html">character_consistency_tracker.html</a> (58-page detailed reference)</li>
+                    <li>├── <a href="character_dashboard.html">character_dashboard.html</a> (main comprehensive dashboard)</li>
+                    <li>├── <a href="character_arc_comparison.html">character_arc_comparison.html</a></li>
+                    <li>├── <a href="relationship_journey.html">relationship_journey.html</a></li>
+                    <li>├── <a href="story_intensity_timeline.html">story_intensity_timeline.html</a></li>
+                    <li>├── <a href="continuity_issues.html">continuity_issues.html</a></li>
+                    <li>├── <a href="power_dynamics.html">power_dynamics.html</a></li>
+                    <li>├── <a href="character_radar_alessandra.html">character_radar_alessandra.html</a></li>
+                    <li>└── <a href="character_radar_edgar.html">character_radar_edgar.html</a></li>
+                </ul>
                 <p><strong>Total Package:</strong> 9 files, ~10 MB, 100% interactive</p>
-            </div>
+            </div> -->
             
             <div style="text-align: center; margin-top: 40px;">
                 <a href="index.html" class="btn">← Back to Dashboard Hub</a>
